@@ -1,26 +1,310 @@
-@import "tailwindcss";
+/* app/globals.css */
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html,
+body {
+  height: 100%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Global body styles */
+body {
+  margin: 0;
+  background: url("/bg1.png") center/cover no-repeat fixed;
+}
+
+/* Center page content */
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+/* Main white container */
+.main-container {
+  max-width: 720px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 40px 32px;
+  color: #111111;
+}
+
+/* Hero layout */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+/* Name */
+.hero-name {
+  font-size: 3rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #000000;
+  position: relative;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  animation: title-glow 2.4s ease-in-out infinite alternate,
+             title-flicker 5s linear infinite;
+}
+
+@keyframes title-glow {
+  0% {
+    text-shadow:
+      0 0 4px rgba(255, 255, 255, 0.7),
+      0 0 9px rgba(255, 105, 180, 0.5),
+      0 0 16px rgba(0, 180, 255, 0.4);
+  }
+  50% {
+    text-shadow:
+      0 0 4px rgba(255, 255, 255, 0.8),
+      0 0 11px rgba(255, 105, 180, 0.55),
+      0 0 20px rgba(0, 180, 255, 0.45);
+  }
+  100% {
+    text-shadow:
+      0 0 4px rgba(255, 255, 255, 0.75),
+      0 0 10px rgba(255, 105, 180, 0.5),
+      0 0 18px rgba(0, 180, 255, 0.47);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+@keyframes title-flicker {
+  0%, 92%, 100% {
+    opacity: 1;
+  }
+  93% {
+    opacity: 0.92;
+  }
+  96% {
+    opacity: 0.8;
+  }
+  98% {
+    opacity: 0.96;
+  }
+}
+
+/* Subheading */
+.hero-subtitle {
+  font-size: 1rem;
+  text-align: center;
+  color: #000000;
+  opacity: 0.8;
+}
+
+/* Buttons row: one line on desktop */
+.nav-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+/* Button base + smooth hover animation */
+.nav-buttons .nes-btn,
+.home-link-row .nes-btn {
+  flex: 0 0 auto;
+  min-width: 140px;
+  justify-content: center;
+  border: none;
+  outline: none;
+  transition:
+    transform 0.22s cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 0.22s cubic-bezier(0.22, 0.61, 1);
+}
+
+@keyframes btn-soft-pulse {
+  0% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.25);
+  }
+  50% {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 0 rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.25);
+  }
+}
+
+.nav-buttons .nes-btn:hover,
+.home-link-row .nes-btn:hover,
+.music-toggle-btn:hover {
+  animation: btn-soft-pulse 260ms ease-out;
+}
+
+/* Home button row inside container */
+.home-link-row {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+/* Music toggle button (speaker icon) */
+.music-toggle-btn {
+  position: fixed;
+  inset: auto 20px 20px auto; /* bottom-right of viewport */
+  z-index: 100;
+  padding: 0;
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: none;
+  outline: none;
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.music-toggle-btn img {
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+  display: block;
+}
+
+/* --- Balatro-style CRT effect (more saturated, less vignette) --- */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 90;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0,
+      rgba(0, 0, 0, 0.38) 50%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    linear-gradient(
+      to right,
+      rgba(255, 120, 120, 0.08),
+      rgba(120, 255, 120, 0.08),
+      rgba(120, 120, 255, 0.08)
+    );
+  background-size: 100% 4px, 3px 100%;
+  mix-blend-mode: soft-light;
+  opacity: 0.75;
+  filter: blur(0.2px);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 89;
+  box-shadow: inset 0 0 70px rgba(0, 0, 0, 0.6);
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 244, 220, 0.03) 0%,
+    rgba(0, 0, 0, 0.4) 85%
+  );
+}
+
+
+
+@media (max-width: 640px) {
+  body {
+    background-attachment: scroll; /* avoid jank on mobile */
+  }
+
+  .page-wrapper {
+    padding: 12px;
+    align-items: flex-start; /* allow scroll if needed */
+  }
+
+  .main-container {
+    padding: 24px 18px;
+    border-radius: 12px;
+  }
+
+  .hero {
+    gap: 20px;
+  }
+
+  .hero-name {
+    font-size: 2.2rem;
+    letter-spacing: 0.06em;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+
+  /* allow nav buttons to wrap nicely on small screens */
+  .nav-buttons {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .nav-buttons .nes-btn,
+  .home-link-row .nes-btn {
+    min-width: 120px;
+    font-size: 0.85rem;
+    padding: 6px 10px;
+  }
+
+  .home-link-row {
+    margin-top: 20px;
+    justify-content: center; /* center Home on narrow screens */
+  }
+
+  /* skills table: make it fit and wrap */
+  .main-container table {
+    font-size: 0.85rem;
+  }
+
+  .main-container table th,
+  .main-container table td {
+    padding: 6px;
+    word-break: break-word;
+  }
+
+  .music-toggle-btn {
+    inset: auto 12px 12px auto;
+    width: 42px;
+    height: 42px;
+  }
+
+  .music-toggle-btn img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* small tablets / medium screens */
+@media (min-width: 641px) and (max-width: 900px) {
+  .page-wrapper {
+    padding: 16px;
+  }
+
+  .main-container {
+    max-width: 640px;
+  }
+
+  .hero-name {
+    font-size: 2.6rem;
+  }
 }
