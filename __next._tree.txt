@@ -1,4 +1,4 @@
-:HL["/Portfolio/_next/static/chunks/7159e53a9c64a8f1.css","style"]
+:HL["/Portfolio/_next/static/chunks/560490d3a6c170ce.css","style"]
 :HL["/Portfolio/_next/static/media/DepartureMono_Regular-s.p.5bf2e55b.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["https://unpkg.com/nes.css@latest/css/nes.min.css","style"]
-0:{"buildId":"E3XfoG3D5QKAA1WtojmX9","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"_jWjIuja7qtZQoqzL4raR","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
