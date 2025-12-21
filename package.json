@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+  "dev": "next dev",
   "build": "next build",
-  "postbuild": "echo > out/.nojekyll",
+  "postbuild": "touch out/.nojekyll",
+  "start": "next start",
+  "lint": "next lint",
   "deploy": "npm run build && gh-pages -d out"
-    
-  },
+},
   "dependencies": {
     "nes.css": "^2.2.1",
     "next": "16.0.10",
