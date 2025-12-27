@@ -17,10 +17,7 @@ body {
 /* Global body styles */
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
-  color: #111111;
-  background: url("/Portfolio/bg1.png") center/cover no-repeat fixed;
+  background: url("/public/bg1.png") center/cover no-repeat fixed;
 }
 
 /* Center page content */
