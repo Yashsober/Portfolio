@@ -17,6 +17,9 @@ body {
 /* Global body styles */
 body {
   margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color: #111111;
   background: url("/Portfolio/bg1.png") center/cover no-repeat fixed;
 }
 
@@ -58,7 +61,7 @@ body {
   position: relative;
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
   animation: title-glow 2.4s ease-in-out infinite alternate,
-             title-flicker 5s linear infinite;
+    title-flicker 5s linear infinite;
 }
 
 @keyframes title-glow {
@@ -81,7 +84,6 @@ body {
       0 0 18px rgba(0, 180, 255, 0.47);
   }
 }
-
 
 @keyframes title-flicker {
   0%, 92%, 100% {
@@ -106,7 +108,7 @@ body {
   opacity: 0.8;
 }
 
-/* Buttons row: one line on desktop */
+/* Buttons row */
 .nav-buttons {
   display: flex;
   flex-direction: row;
@@ -183,7 +185,7 @@ body {
   display: block;
 }
 
-/* --- Balatro-style CRT effect (more saturated, less vignette) --- */
+/* Balatro-style CRT overlay */
 body::before {
   content: "";
   position: fixed;
@@ -223,16 +225,15 @@ body::after {
   );
 }
 
-
-
+/* Mobile */
 @media (max-width: 640px) {
   body {
-    background-attachment: scroll; /* avoid jank on mobile */
+    background-attachment: scroll;
   }
 
   .page-wrapper {
     padding: 12px;
-    align-items: flex-start; /* allow scroll if needed */
+    align-items: flex-start;
   }
 
   .main-container {
@@ -253,7 +254,6 @@ body::after {
     font-size: 0.9rem;
   }
 
-  /* allow nav buttons to wrap nicely on small screens */
   .nav-buttons {
     flex-wrap: wrap;
     gap: 12px;
@@ -268,10 +268,9 @@ body::after {
 
   .home-link-row {
     margin-top: 20px;
-    justify-content: center; /* center Home on narrow screens */
+    justify-content: center;
   }
 
-  /* skills table: make it fit and wrap */
   .main-container table {
     font-size: 0.85rem;
   }
@@ -294,7 +293,7 @@ body::after {
   }
 }
 
-/* small tablets / medium screens */
+/* Small tablets / medium screens */
 @media (min-width: 641px) and (max-width: 900px) {
   .page-wrapper {
     padding: 16px;

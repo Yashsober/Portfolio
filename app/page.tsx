@@ -1,4 +1,3 @@
-// app/page.tsx
 "use client";
 
 import Link from "next/link";
@@ -13,7 +12,6 @@ export default function Home() {
     const base = clickSoundRef.current;
     if (!base) return;
 
-    // clone node so rapid clicks each get their own playback
     const clone = base.cloneNode(true) as HTMLAudioElement;
     clone.currentTime = 0;
     clone.volume = 1;
@@ -29,62 +27,47 @@ export default function Home() {
     setIsMuted(nextMuted);
   };
 
-  // Start background music (muted) on mount if possible
   useEffect(() => {
     const bgAudio = bgMusicRef.current;
     if (!bgAudio) return;
 
     bgAudio.loop = true;
     bgAudio.muted = true;
-    bgAudio
-      .play()
-      .catch(() => {
-        // If autoplay is blocked, it will start after first user interaction
-      });
+    bgAudio.play().catch(() => {});
   }, []);
 
   return (
     <>
       {/* base audio nodes (hidden) */}
       <audio ref={clickSoundRef} className="hidden" preload="auto">
-        <source src="/sounds/click.mp3" type="audio/mpeg" />
+        <source src="/Portfolio/sounds/click.mp3" type="audio/mpeg" />
       </audio>
 
       <audio ref={bgMusicRef} className="hidden" preload="auto">
-        <source src="/sounds/bg-music.mp3" type="audio/mpeg" />
+        <source src="/Portfolio/sounds/bg-music.mp3" type="audio/mpeg" />
       </audio>
 
-      <main className="main-container nes-container is-rounded hero">
-        <h1 className="hero-name">Yash Drabhlani</h1>
-        <p className="hero-subtitle">Full-Stack Developer</p>
+      <div className="page-wrapper">
+        <main className="main-container nes-container is-rounded hero">
+          <h1 className="hero-name">Yash Drabhlani</h1>
+          <p className="hero-subtitle">Full-Stack Developer</p>
 
-        <div className="nav-buttons">
-          <Link href="/about" onClick={playClick} className="nes-btn is-primary">
-            About
-          </Link>
-          <Link
-            href="/projects"
-            onClick={playClick}
-            className="nes-btn is-success"
-          >
-            Projects
-          </Link>
-          <Link
-            href="/skills"
-            onClick={playClick}
-            className="nes-btn is-warning"
-          >
-            Skills
-          </Link>
-          <Link
-            href="/contact"
-            onClick={playClick}
-            className="nes-btn is-error"
-          >
-            Contact
-          </Link>
-        </div>
-      </main>
+          <div className="nav-buttons">
+            <Link href="/about" onClick={playClick} className="nes-btn is-primary">
+              About
+            </Link>
+            <Link href="/projects" onClick={playClick} className="nes-btn is-success">
+              Projects
+            </Link>
+            <Link href="/skills" onClick={playClick} className="nes-btn is-warning">
+              Skills
+            </Link>
+            <Link href="/contact" onClick={playClick} className="nes-btn is-error">
+              Contact
+            </Link>
+          </div>
+        </main>
+      </div>
 
       {/* bottom-right mute/unmute toggle with speaker icons */}
       <button
@@ -96,7 +79,7 @@ export default function Home() {
         aria-label={isMuted ? "Unmute background music" : "Mute background music"}
       >
         <img
-          src={isMuted ? "/speaker2.png" : "/speaker1.png"}
+          src={isMuted ? "/Portfolio/speaker2.png" : "/Portfolio/speaker1.png"}
           alt={isMuted ? "Muted" : "Unmuted"}
         />
       </button>
