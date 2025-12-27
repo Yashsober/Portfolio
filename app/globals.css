@@ -17,7 +17,7 @@ body {
 /* Global body styles */
 body {
   margin: 0;
-  background: url("/Portfolio/bg1.png") center/cover no-repeat fixed;
+  background: url("/public/bg1.png") center/cover no-repeat fixed;
 }
 
 /* Center page content */
